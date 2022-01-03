@@ -1,0 +1,122 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-light:             #99a1b3; // change
+@gray-lighter:           lighten(@gray-light, 10%); // change
+@white: 				 #fff;	  // change
+@header-bg-color:		 #2d313d; // change
+@header-text-color:		 #646d81; // change
+@header-icon-color:		 #727989; // change
+@main-bg-color: 		 #fcfdfe; // change
+
+//** Background color for `<body>`.
+@body-bg:               #f2f4f8;    //change
+
+@border-radius-base:        0;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-font-weight:                normal;
+
+@btn-default-color:              @header-bg-color;
+@btn-default-bg:                 #fff;
+@btn-default-border:             @gray-light;
+
+//== Forms
+//
+//##
+
+
+//== Dropdowns
+
+//** Dropdown link text color.
+@dropdown-link-color:            @header-text-color;  //change
+//** Hover color for dropdown links.
+@dropdown-link-hover-color:      darken(@header-text-color, 5%); // change
+//** Hover background for dropdown links.
+@dropdown-link-hover-bg:         @body-bg;  // change
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+@screen-xs:                  320px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+@screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+@screen-md:                  1025px;
+@screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+@screen-lg-desktop:          @screen-lg-min;
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:              24;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         0;    //change
+
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:             (768px + @grid-gutter-width);
+
+// Medium screen / desktop
+@container-desktop:            (960px + @grid-gutter-width);
+//** For `@screen-md-min` and up.
+@container-md:                 960px;
+
+// Large screen / wide desktop
+@container-large-desktop:      (@container-md + @grid-gutter-width);
+
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    0; //change
+@navbar-margin-bottom:             0;     //change
+
+@navbar-default-bg:                #646d81; //change
+
+// Navbar links
+@navbar-default-link-color:                #fff; //change
+@navbar-default-link-hover-color:          darken(@navbar-default-link-color, 10%); //change
+
+
