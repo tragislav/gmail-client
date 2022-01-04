@@ -1,0 +1,2 @@
+export const GET_MESSAGES = 'GMAIL/GET_MESSAGES';
+export const GET_MESSAGE = 'GMAIL/GET_MESSAGE';

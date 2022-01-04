@@ -1,10 +1,12 @@
+import { GET_MESSAGE, GET_MESSAGES } from '../types';
+
 export function getMessages() {
     return async (dispatch) => {
         try {
             const requestOptions = {
                 method: 'GET',
                 headers: {
-                    Authorization: 'Bearer' + localStorage.getItem('token'),
+                    Authorization: localStorage.token,
                 },
             };
             const response = await fetch(
@@ -13,7 +15,7 @@ export function getMessages() {
             );
 
             const result = await response.json();
-            dispatch({ type: 'GET_MESSAGES', payload: result });
+            dispatch({ type: GET_MESSAGES, payload: result });
         } catch (error) {
             console.error(error);
         }
@@ -26,7 +28,7 @@ export function getMessage(id) {
             const requestOptions = {
                 method: 'GET',
                 headers: {
-                    Authorization: 'Bearer' + localStorage.getItem('token'),
+                    Authorization: localStorage.token,
                 },
             };
             const response = await fetch(
@@ -36,7 +38,7 @@ export function getMessage(id) {
 
             const json = await response.json();
             const result = _transformMessage(json);
-            dispatch({ type: 'GET_MESSAGE', payload: result });
+            dispatch({ type: GET_MESSAGE, payload: result });
         } catch (error) {
             console.error(error);
         }

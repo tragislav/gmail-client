@@ -1,3 +1,5 @@
+import { GET_MESSAGE, GET_MESSAGES } from '../types';
+
 const initialState = {
     messages: {
         messages: [],
@@ -7,12 +9,12 @@ const initialState = {
 
 export const gmailAPIReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_MESSAGES':
+        case GET_MESSAGES:
             return {
                 ...state,
                 messages: action.payload,
             };
-        case 'GET_MESSAGE':
+        case GET_MESSAGE:
             return {
                 ...state,
                 message: action.payload,
