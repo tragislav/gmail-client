@@ -1,7 +1,22 @@
-const initialState = {};
+const initialState = {
+    messages: {
+        messages: [],
+    },
+    message: {},
+};
 
 export const gmailAPIReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'GET_MESSAGES':
+            return {
+                ...state,
+                messages: action.payload,
+            };
+        case 'GET_MESSAGE':
+            return {
+                ...state,
+                message: action.payload,
+            };
         default:
             return state;
     }
