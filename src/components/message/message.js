@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getMessage } from '../../redux/gmailAPIReducer/actions';
+import { getMessages } from '../../redux/gmailAPIReducer/actions';
 
 import member from '../../images/member4.png';
 
@@ -13,12 +13,11 @@ export default function Message({ message, arrayNumber }) {
     let messageInfo = useRef(null);
 
     useEffect(() => {
-        dispatch(getMessage(message.id));
+        dispatch(getMessages(message.id));
     }, [dispatch, message.id]);
 
     messageInfo = messageContent[arrayNumber];
 
-    console.log('info', messageInfo);
     return (
         <section className="media">
             <div className="media-left">
@@ -28,23 +27,22 @@ export default function Message({ message, arrayNumber }) {
             </div>
             <div className="media-body">
                 <div className="userInfo clearfix">
-                    <span>User name</span>
+                    <span>{messageInfo ? messageInfo.from : null}</span>
                     <div className="commentsAndTime pull-right">
-                        <Link to={'/'}>
-                            <i className="icon-chat"></i>2
-                        </Link>
                         <span>
                             <i className="icon-clock"></i>
                             <time
                                 className="timeago"
-                                dateTime="2015-06-16T15:30:17Z"
-                            ></time>
+                                dateTime={messageInfo ? messageInfo.date : null}
+                            >
+                                {messageInfo ? messageInfo.date : null}
+                            </time>
                         </span>
                     </div>
                 </div>
                 <div className="itemName">
                     <Link to={'/'} className="media-heading" title="Item title">
-                        Item title 1i
+                        {messageInfo ? messageInfo.title : null}
                     </Link>
                     <span className="status pull-right hidden"></span>
                 </div>

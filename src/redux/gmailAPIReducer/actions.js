@@ -1,6 +1,6 @@
 import { GET_MESSAGE, GET_MESSAGES } from '../types';
 
-export function getMessages() {
+export function getMessagesCreds() {
     return async (dispatch) => {
         try {
             const requestOptions = {
@@ -22,7 +22,7 @@ export function getMessages() {
     };
 }
 
-export function getMessage(id) {
+export function getMessages(id) {
     return async (dispatch) => {
         try {
             const requestOptions = {
@@ -49,5 +49,11 @@ const _transformMessage = (message) => {
     return {
         id: message.id,
         snippet: message.snippet,
+        date: message.payload.headers.find((item) => item.name === 'Date')
+            .value,
+        title: message.payload.headers.find((item) => item.name === 'Subject')
+            .value,
+        from: message.payload.headers.find((item) => item.name === 'From')
+            .value,
     };
 };
