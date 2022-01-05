@@ -7,6 +7,7 @@ import { getMessagesCreds } from '../../redux/gmailAPIReducer/actions';
 import Header from '../header';
 import Main from '../main';
 import Navbar from '../navbar';
+import Submenu from '../submenu';
 
 function App() {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
                 <Header />
                 <Navbar />
                 <main className="container main">
+                    <Submenu />
                     <Routes>
                         <Route
                             exact

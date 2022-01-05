@@ -6,7 +6,7 @@ export function getMessagesCreds() {
             const requestOptions = {
                 method: 'GET',
                 headers: {
-                    Authorization: localStorage.token,
+                    Authorization: sessionStorage.token,
                 },
             };
             const response = await fetch(
@@ -28,7 +28,7 @@ export function getMessages(id) {
             const requestOptions = {
                 method: 'GET',
                 headers: {
-                    Authorization: localStorage.token,
+                    Authorization: sessionStorage.token,
                 },
             };
             const response = await fetch(

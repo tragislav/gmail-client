@@ -1,5 +1,9 @@
 import React from 'react';
+
+import Heading from '../heading';
 import Message from '../message';
+import SearchForm from '../searchForm';
+import Footer from '../footer';
 
 function Main({ messages }) {
     let counterValue = 0;
@@ -10,6 +14,8 @@ function Main({ messages }) {
 
     return (
         <section className="mainSection">
+            <Heading />
+            <SearchForm />
             <section className="postsContainer">
                 {messages.messages.map((item) => {
                     counterValue++;
@@ -21,6 +27,7 @@ function Main({ messages }) {
                         />
                     );
                 })}
+                <Footer />
             </section>
         </section>
     );
