@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getMessagesCreds } from '../../redux/gmailAPIReducer/actions';
+import {
+    getMessagesCreds,
+    getDraftsCreds,
+} from '../../redux/gmailAPIReducer/actions';
 
 import Header from '../header';
 import Main from '../main';
@@ -12,9 +15,11 @@ import Submenu from '../submenu';
 function App() {
     const dispatch = useDispatch();
     const messagesCreds = useSelector((state) => state.gmailAPI.messagesCreds);
+    const draftsCreds = useSelector((state) => state.gmailAPI.draftsCreds);
 
     useEffect(() => {
         dispatch(getMessagesCreds());
+        dispatch(getDraftsCreds());
     }, [dispatch]);
 
     return (
@@ -28,7 +33,32 @@ function App() {
                         <Route
                             exact
                             path="/"
-                            element={<Main messages={messagesCreds} />}
+                            element={
+                                <Main
+                                    messages={messagesCreds}
+                                    folder={'messages'}
+                                />
+                            }
+                        />
+                        <Route
+                            exact
+                            path="/drafts"
+                            element={
+                                <Main
+                                    messages={draftsCreds}
+                                    folder={'drafts'}
+                                />
+                            }
+                        />
+                        <Route
+                            exact
+                            path="/messages"
+                            element={
+                                <Main
+                                    messages={messagesCreds}
+                                    folder={'messages'}
+                                />
+                            }
                         />
                     </Routes>
                 </main>

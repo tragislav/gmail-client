@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { getMessagesCreds, search } from '../../redux/gmailAPIReducer/actions';
 
 export default function SearchForm() {
+    const dispatch = useDispatch();
     return (
         <div className="searchForm row">
             <div className="col-sm-14">
@@ -13,6 +17,11 @@ export default function SearchForm() {
                 >
                     <div className="input-group">
                         <input
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                dispatch(search(e.target.value));
+                                dispatch(getMessagesCreds());
+                            }}
                             className="form-control"
                             type="text"
                             name="search"

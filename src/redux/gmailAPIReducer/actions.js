@@ -1,4 +1,6 @@
-import { GET_MESSAGE, GET_MESSAGES } from '../types';
+import { GET_DRAFTS, GET_MESSAGE, GET_MESSAGES, SEARCH } from '../types';
+
+const BASE_URL = 'https://content.googleapis.com/gmail/v1/users/me';
 
 export function getMessagesCreds() {
     return async (dispatch) => {
@@ -10,12 +12,34 @@ export function getMessagesCreds() {
                 },
             };
             const response = await fetch(
-                'https://content.googleapis.com/gmail/v1/users/me/messages?maxResults=10',
+                `${BASE_URL}/messages?maxResults=10`,
                 requestOptions
             );
 
             const result = await response.json();
             dispatch({ type: GET_MESSAGES, payload: result });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+}
+
+export function getDraftsCreds() {
+    return async (dispatch) => {
+        try {
+            const requestOptions = {
+                method: 'GET',
+                headers: {
+                    Authorization: sessionStorage.token,
+                },
+            };
+            const response = await fetch(
+                `${BASE_URL}/drafts?maxResults=10`,
+                requestOptions
+            );
+
+            const result = await response.json();
+            dispatch({ type: GET_DRAFTS, payload: result });
         } catch (error) {
             console.error(error);
         }
@@ -32,7 +56,7 @@ export function getMessages(id) {
                 },
             };
             const response = await fetch(
-                `https://content.googleapis.com/gmail/v1/users/me/messages/${id}`,
+                `${BASE_URL}/messages/${id}`,
                 requestOptions
             );
 
@@ -43,6 +67,10 @@ export function getMessages(id) {
             console.error(error);
         }
     };
+}
+
+export function search(str) {
+    return { type: SEARCH, payload: str };
 }
 
 const _transformMessage = (message) => {

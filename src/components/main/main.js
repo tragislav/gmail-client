@@ -5,10 +5,10 @@ import Message from '../message';
 import SearchForm from '../searchForm';
 import Footer from '../footer';
 
-function Main({ messages }) {
+function Main({ messages, folder }) {
     let counterValue = 0;
 
-    if (!messages.messages.length) {
+    if (!messages[folder].length) {
         return <div>Пожалуйста, авторизуйтесь в систему</div>;
     }
 
@@ -17,13 +17,14 @@ function Main({ messages }) {
             <Heading />
             <SearchForm />
             <section className="postsContainer">
-                {messages.messages.map((item) => {
+                {messages[folder].map((item) => {
                     counterValue++;
                     return (
                         <Message
                             message={item}
                             key={item.id}
                             arrayNumber={counterValue - 1}
+                            folder={folder}
                         />
                     );
                 })}
