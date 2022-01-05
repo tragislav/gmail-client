@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import logotype from '../../images/logotype.png';
+import profilePhoto from '../../images/profilePhoto.png';
+
 const Header = () => {
     return (
         <header className="header">
@@ -9,18 +12,12 @@ const Header = () => {
                     <div className="logoBlock">
                         <Link to={'/'}>
                             <img
-                                src="/public/images/logotype.png"
+                                src={logotype}
                                 className="logo"
                                 title="Logo"
                                 alt="logo"
                             />
-                            <img
-                                src="/public/images/logotypeMobile.png"
-                                className="logoMobile"
-                                alt="logoMobile"
-                            />
                         </Link>
-                        <span>Page title</span>
                     </div>
                     <div className="header-comp pull-right">
                         <div className="dropdown">
@@ -85,10 +82,7 @@ const Header = () => {
                         </Link>
                         <Link to={'/'} className="profile">
                             <span>User name</span>
-                            <img
-                                src="/public/images/profilePhoto.png"
-                                alt="profilePhoto"
-                            />
+                            <img src={profilePhoto} alt="profilePhoto" />
                         </Link>
                         <Link to={'/'} className="btn btn-xs btn-header">
                             <i className="headerIcon icon-search"></i>
