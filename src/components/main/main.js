@@ -1,21 +1,29 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getMessages } from '../../redux/gmailAPIReducer/actions';
 import Message from '../message';
 
-function Main() {
-    const dispatch = useDispatch();
-    const messages = useSelector((state) => state.gmailAPI.messages);
+function Main({ messages }) {
+    let counterValue = 0;
 
     if (!messages.messages.length) {
-        return (
-            <button onClick={() => dispatch(getMessages())}>загрузить</button>
-        );
+        return <div>Пожалуйста, авторизуйтесь в систему</div>;
     }
-    return messages.messages.map((item) => {
-        return <Message message={item} key={item.id} />;
-    });
+
+    return (
+        <section className="mainSection">
+            <section className="postsContainer">
+                {messages.messages.map((item) => {
+                    counterValue++;
+                    return (
+                        <Message
+                            message={item}
+                            key={item.id}
+                            arrayNumber={counterValue - 1}
+                        />
+                    );
+                })}
+            </section>
+        </section>
+    );
 }
 
 export default Main;

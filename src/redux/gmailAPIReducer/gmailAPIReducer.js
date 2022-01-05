@@ -4,7 +4,7 @@ const initialState = {
     messages: {
         messages: [],
     },
-    message: {},
+    message: [],
 };
 
 export const gmailAPIReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ export const gmailAPIReducer = (state = initialState, action) => {
         case GET_MESSAGE:
             return {
                 ...state,
-                message: action.payload,
+                message: [...state.message, action.payload],
             };
         default:
             return state;
