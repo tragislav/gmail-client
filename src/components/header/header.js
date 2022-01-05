@@ -81,8 +81,19 @@ const Header = () => {
                             <i className="headerIcon icon-mail"></i>
                         </Link>
                         <Link to={'/'} className="profile">
-                            <span>User name</span>
-                            <img src={profilePhoto} alt="profilePhoto" />
+                            <span>
+                                {sessionStorage.fullName
+                                    ? sessionStorage.fullName
+                                    : 'User Name'}
+                            </span>
+                            <img
+                                src={
+                                    sessionStorage.image
+                                        ? sessionStorage.image
+                                        : profilePhoto
+                                }
+                                alt="profilePhoto"
+                            />
                         </Link>
                         <Link to={'/'} className="btn btn-xs btn-header">
                             <i className="headerIcon icon-search"></i>
